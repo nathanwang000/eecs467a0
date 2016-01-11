@@ -1,0 +1,7 @@
+package keypress;
+
+struct keypress_t
+{
+    int64_t  timestamp;
+    int8_t   character;
+}
