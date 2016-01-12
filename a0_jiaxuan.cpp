@@ -36,10 +36,8 @@ public:
 	{0.0f, 0.0f, 1.0f, 1.0f},
         {0.39f, 0.15f, 0.80f, 1.0f},
         {0.0f, 1.0f, 1.0f, 1.0f},
-	{1.0f, 1.0f, 1.0f, 1.0f},
         {0.0f, 0.0f, 0.0f, 1.0f},
         {0.5f, 0.5f, 0.5f, 1.0f},
-        {0.0f, 0.0f, 0.0f, 0.0f},
 	{0.5f, 0.0f, 0.0f, 1.0f},
         {0.0f, 0.5f, 0.0f, 1.0f},
         {0.0f, 0.0f, 0.5f, 1.0f},
@@ -58,9 +56,6 @@ public:
 	points.push_back(y);
 	theta.push_back(t);
       }
-      cout << npoints << endl;
-      for (auto i: points) cout << i << " ";
-      cout << endl;
     }
     
     virtual int onMouseEvent(vx_layer_t* layer, vx_camera_pos_t* cameraPosition, vx_mouse_event_t* event)
@@ -74,20 +69,20 @@ public:
         std::cout << "Key press: Released:" << event->released << " Key:" << event->key_code << '\n';
 	switch (event->key_code) {
 	case 268: // left
-	  std::cout << "left fired" << '\n';
-	  trianglecolor = (trianglecolor - 1) % 17;
+	  // std::cout << "left fired" << '\n';
+	  trianglecolor = (trianglecolor + 14) % 15;
 	  break;
 	case 271: // up
-	  std::cout << "up fired" << '\n';
-	  linecolor = (linecolor + 1) % 18;
+	  // std::cout << "up fired" << '\n';
+	  linecolor = (linecolor + 1) % 15;
 	  break;
 	case 269: // right
-	  std::cout << "right fired" << '\n';
-	  trianglecolor = (trianglecolor + 1) % 17;
+	  // std::cout << "right fired" << '\n';
+	  trianglecolor = (trianglecolor + 1) % 15;
 	  break;
 	case 270: // down
-	  std::cout << "down fired" << '\n';
-	  linecolor = (linecolor - 1) % 18;
+	  // std::cout << "down fired" << '\n';
+	  linecolor = (linecolor + 14) % 15;
 	}
 
         return 0;

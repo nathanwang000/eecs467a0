@@ -1,0 +1,3 @@
+1) the estimates of type speed using system clock vs. using key_press_t timestamps are similar and comparable to 0.1 char/min precision. The difference in value are caused by the unpredictable interprocess delay in the system.
+2) The characters per minute estimates output by the key_listener is unchanged
+3) Using key_listener time estimate is more acurate as it is invaraint with respect to playback speed (so that log and live data results are comparable).

@@ -13,7 +13,7 @@ class Handler
   int prev_message_time;
 public:
   Handler() : total_time_system(0), total_time_message(0) {
-    prev_message_time = prev_utime = utime_now();
+    prev_message_time = prev_utime = -1;
     total_message = 0;
   }
   ~Handler() {}
@@ -22,6 +22,14 @@ public:
 		     const std::string& chan, 
 		     const keypress::keypress_t* msg)
   {
+    // first time
+    if (prev_message_time == -1) {
+      prev_message_time = msg->timestamp;
+      prev_utime = utime_now();
+      total_message++;
+      return;
+    }
+    
     int64_t tmp = utime_now();
     total_time_system += tmp - prev_utime;
     prev_utime = tmp;

@@ -5,10 +5,10 @@
 
 int main(int argc, char ** argv) {
   
-  system("stty raw -echo");
+  if (system("stty raw -echo") == -1) exit(1);
   lcm::LCM lcm;
   if (!lcm.good()) {
-    system("stty sane");
+    if (system("stty sane") == -1) exit(1);
     return 1;
   }
 
@@ -20,6 +20,6 @@ int main(int argc, char ** argv) {
     lcm.publish("A0_KEY_PRESS",&message);
   }
   
-  system("stty sane");
+  if (system("stty sane") == -1) exit(1);
   return 0;
 }
